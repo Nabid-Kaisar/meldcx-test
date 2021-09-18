@@ -9,26 +9,35 @@ import LoginReqBody from "../../models/loginReqBody";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
 
     const history = useHistory();
 
     const login = (): void => {
+        if (!email || !password) {
+            setErrorMsg("Email or Password field can not be empty!");
+            return;
+        }
         const loginReq: LoginReqBody = {
             email,
             password
         }
         loginApi.doLogin(loginReq)
             .then((res) => {
-                console.log(res);
                 history.push("/devices");
             }).catch(err => {
-            alert(err);
+            if (err.response && err.response.data) {
+                setErrorMsg(err.response.data);
+            } else {
+                setErrorMsg(err.toString());
+            }
         })
     }
 
     const inputStyle = {
         backgroundColor: "#ECEFF1",
-        borderColor: "#FFFFFF"
+        borderColor: "#FFFFFF",
+        fontSize: "1.7rem"
     }
 
     const btnStyle = {
@@ -48,6 +57,7 @@ function Login() {
                            class={"input-style"} style={inputStyle}/>
                     <Input placeholder={"Password"} setData={setPassword} iconName={"glyphicon glyphicon-cog"}
                            class={"input-style"} style={inputStyle}/>
+                    {errorMsg && <div className="alert-danger mt-4">{errorMsg}</div>}
                     <div className={"btn-container centerFlex"}>
                         <Button onClickCb={login} class={"btn btn-primary btn-lg btn-style"} styles={btnStyle}
                                 label={"LOG IN"}

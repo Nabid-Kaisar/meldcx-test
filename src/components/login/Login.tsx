@@ -30,19 +30,28 @@ function Login() {
         backgroundColor: "#ECEFF1",
         borderColor: "#FFFFFF"
     }
+
+    const btnStyle = {
+        fontSize: "1.8rem",
+        lineHeight: "3.5rem",
+        fontWeight: "bold"
+    }
+
     return (
         <div className={"background centerFlex"}>
             <div className={"card card-size"}>
                 <div className={"card-body"} style={{padding: "8%"}}>
-                    <div className={"card-title text-center h1 mt-lg-5"}>
+                    <h1 className={"text-center mt-lg-5 display-4"}>
                         Login
-                    </div>
+                    </h1>
                     <Input placeholder={"Email Address"} setData={setEmail} iconName={"glyphicon glyphicon-envelope"}
                            class={"input-style"} style={inputStyle}/>
                     <Input placeholder={"Password"} setData={setPassword} iconName={"glyphicon glyphicon-cog"}
                            class={"input-style"} style={inputStyle}/>
                     <div className={"btn-container centerFlex"}>
-                        <Button onClickCb={login} class={"btn btn-primary btn-lg"} label={"LOG IN"}></Button>
+                        <Button onClickCb={login} class={"btn btn-primary btn-lg btn-style"} styles={btnStyle}
+                                label={"LOG IN"}
+                        ></Button>
                     </div>
 
                 </div>

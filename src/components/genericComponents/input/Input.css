@@ -15,8 +15,8 @@
 /* style glyph */
 .inner-addon .glyphicon {
     position: absolute;
-    padding: 10px;
     pointer-events: none;
+    padding: 10px;
 }
 
 /* align glyph */
@@ -30,7 +30,7 @@
 
 /* add padding  */
 .left-addon input {
-    padding-left: 30px;
+    padding-left: 50px;
 }
 
 .right-addon input {
@@ -39,4 +39,21 @@
 
 input{
     background: #ECEFF1;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 1.4rem;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    font-size: 2rem;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    font-size: 2rem;
+}
+:-moz-placeholder { /* Firefox 18- */
+    font-size: 2rem;
+}
+
+.icon-cls{
+    font-size: 2.0rem;
 }

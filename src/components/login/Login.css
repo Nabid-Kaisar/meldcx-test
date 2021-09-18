@@ -15,7 +15,7 @@
 }
 
 .btn-container{
-    margin-top: 10%;
+    margin-top: 8%;
 }
 
 .mt-20per{
@@ -31,8 +31,11 @@ and (max-device-width : 480px) {
     }
 }
 
-.btn-color{
-    background: #ECEFF1;
+.btn-style{
+    width: 30%;
+    line-height: 2.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
 .input-style{

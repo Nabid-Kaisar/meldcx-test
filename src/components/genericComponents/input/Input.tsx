@@ -20,7 +20,7 @@ function Input(options: optionsType) {
                 <label className="control-label">
                 </label>
                 <div className="inner-addon left-addon">
-                    <i className={options.iconName}></i>
+                    <i className={`icon-cls ${options.iconName}`}></i>
                     <input style={options.style} onChange={handleOnChange} type="text" className={`form-control ${options.class}`}  placeholder={options.placeholder}/>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import {useHistory} from "react-router-dom";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Login.css";
 import Input from "../genericComponents/input/Input";
 import Button from "../genericComponents/button/Button";
@@ -52,7 +52,7 @@ function Login() {
     }
 
 
-    const handleOnKeyDown = (event: any):void => {
+    const handleOnKeyDown = (event: any): void => {
         if (event.keyCode === 13) {
             login();
         }

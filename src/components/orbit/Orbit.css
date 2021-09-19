@@ -1,0 +1,65 @@
+.ball {
+    width: 15px;
+    height: 15px;
+    margin-top: 180px;
+    transform-origin: 200% center;
+    position: relative;
+    animation: rotate 3s linear infinite;
+    border-radius: 50%;
+    background:white;
+}
+
+.ball:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background:white;
+    animation: rotate 3s linear reverse infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/*new implme*/
+.main {
+    position: absolute;
+    border: 0;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+}
+
+.circle {
+    position: absolute;
+    left: calc(50% - 25px);
+    top: calc(50% - 25px);
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border-color: white;
+    border-radius: 50%;
+}
+
+.circle:nth-child(1) {
+    transform: translateX(250px);
+}
+
+.circle:nth-child(2) {
+    transform: rotate(72deg) translateX(250px);
+}
+
+.circle:nth-child(3) {
+    transform: rotate(144deg) translateX(250px);
+}
+
+.circle:nth-child(4) {
+    transform: rotate(216deg) translateX(250px);
+}
+
+.circle:nth-child(5) {
+    transform: rotate(288deg) translateX(250px);
+}

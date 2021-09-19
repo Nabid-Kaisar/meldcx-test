@@ -17,15 +17,16 @@
     margin: auto;
 }
 
-.fl-column{
+.fl-column {
     flex-direction: column;
 }
 
-.bigNum{
+.bigNum {
     color: white;
     font-size: 7rem;
+    text-align: center;
 }
 
-.smallText{
+.smallText {
     font-size: 2rem;
 }

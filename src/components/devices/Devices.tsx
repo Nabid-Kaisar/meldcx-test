@@ -5,6 +5,7 @@ import util from "../../util";
 import "./Devices.css";
 import Button from "../genericComponents/button/Button";
 import {useHistory} from "react-router-dom";
+import Orbit from "../orbit/Orbit";
 
 const logoutBtnStyle = {
     backgroundColor: "#545b62",
@@ -62,11 +63,7 @@ function Devices() {
 
     return (
         <div className={"dev-bg"}>
-            <div className={"centerFlex centerScreen fl-column"}>
-                <div className={"bigNum"}>{devicesList.length}</div>
-                <div className={"text-white smallText"}>DEVICES</div>
-                <div className={"text-white smallText"}>ONLINE</div>
-            </div>
+            <Orbit deviceCount={devicesList.length}/>
             <div className={"footer-bg fixed-bottom centerFlex"}>
                 <Button onClickCb={handleNotify} label={"NOTIFY"} class={"btn btn-light"}
                         styles={notifyBtnStyle}/>

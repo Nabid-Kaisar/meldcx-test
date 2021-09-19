@@ -5,6 +5,20 @@ import Input from "../genericComponents/input/Input";
 import Button from "../genericComponents/button/Button";
 import loginApi from "../../apiHandlers/loginApi";
 import LoginReqBody from "../../models/loginReqBody";
+import util from "../../util";
+import CONSTANTS from "../../CONSTANTS";
+
+const inputStyle = {
+    backgroundColor: "#ECEFF1",
+    borderColor: "#FFFFFF",
+    fontSize: "1.7rem"
+}
+
+const btnStyle = {
+    fontSize: "1.8rem",
+    lineHeight: "3.5rem",
+    fontWeight: "bold"
+}
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -24,6 +38,9 @@ function Login() {
         }
         loginApi.doLogin(loginReq)
             .then((res) => {
+                //set cookie
+                util.setCookies(CONSTANTS.authTokenNameOfCookie, res.data);
+                //navigate
                 history.push("/devices");
             }).catch(err => {
             if (err.response && err.response.data) {
@@ -34,17 +51,6 @@ function Login() {
         })
     }
 
-    const inputStyle = {
-        backgroundColor: "#ECEFF1",
-        borderColor: "#FFFFFF",
-        fontSize: "1.7rem"
-    }
-
-    const btnStyle = {
-        fontSize: "1.8rem",
-        lineHeight: "3.5rem",
-        fontWeight: "bold"
-    }
 
     return (
         <div className={"background centerFlex"}>

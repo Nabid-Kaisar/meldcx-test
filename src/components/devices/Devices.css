@@ -1,0 +1,31 @@
+.dev-bg {
+    background: #FF7043;
+    height: 100vh;
+}
+
+.footer-bg {
+    background: #D76845;
+    height: 10%;
+}
+
+.centerScreen {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.fl-column{
+    flex-direction: column;
+}
+
+.bigNum{
+    color: white;
+    font-size: 7rem;
+}
+
+.smallText{
+    font-size: 2rem;
+}

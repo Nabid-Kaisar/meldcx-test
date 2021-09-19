@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 import CONSTANTS from "../CONSTANTS";
 
 const baseURL = CONSTANTS.baseUrl;
@@ -9,4 +8,8 @@ const getDevicesList = () => {
     return axios.get(devicesListUrl);
 }
 
-export default {getDevicesList};
+const devicesApi = {
+    getDevicesList
+}
+
+export default devicesApi;

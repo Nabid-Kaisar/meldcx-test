@@ -7,6 +7,7 @@ interface optionsType {
     iconName?: string;
     class?: string;
     style?: any;
+    onKeyDown?:any;
 }
 
 function Input(options: optionsType) {
@@ -21,7 +22,8 @@ function Input(options: optionsType) {
                 </label>
                 <div className="inner-addon left-addon">
                     <i className={`icon-cls ${options.iconName}`}></i>
-                    <input style={options.style} onChange={handleOnChange} type="text" className={`form-control ${options.class}`}  placeholder={options.placeholder}/>
+                    <input onKeyDown={options.onKeyDown} style={options.style} onChange={handleOnChange} type="text"
+                           className={`form-control ${options.class}`} placeholder={options.placeholder}/>
                 </div>
             </div>
 

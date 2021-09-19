@@ -52,6 +52,12 @@ function Login() {
     }
 
 
+    const handleOnKeyDown = (event: any):void => {
+        if (event.keyCode === 13) {
+            login();
+        }
+    }
+
     return (
         <div className={"background centerFlex"}>
             <div className={"card card-size"}>
@@ -60,9 +66,9 @@ function Login() {
                         Login
                     </h1>
                     <Input placeholder={"Email Address"} setData={setEmail} iconName={"glyphicon glyphicon-envelope"}
-                           class={"input-style"} style={inputStyle}/>
+                           class={"input-style"} style={inputStyle} onKeyDown={handleOnKeyDown}/>
                     <Input placeholder={"Password"} setData={setPassword} iconName={"glyphicon glyphicon-cog"}
-                           class={"input-style"} style={inputStyle}/>
+                           class={"input-style"} style={inputStyle} onKeyDown={handleOnKeyDown}/>
                     {errorMsg && <div className="alert-danger mt-4">{errorMsg}</div>}
                     <div className={"btn-container centerFlex"}>
                         <Button onClickCb={login} class={"btn btn-primary btn-lg btn-style"} styles={btnStyle}

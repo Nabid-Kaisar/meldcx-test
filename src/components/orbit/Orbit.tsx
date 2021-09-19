@@ -6,26 +6,44 @@ interface props {
 }
 
 function Orbit(props: props) {
+    const [circles, setCircles] = React.useState([])
 
-    const getDivs = () => {
+    React.useEffect(() => {
+        console.log('Render:', props.deviceCount)
+        setCircles((prevState: any) => {
+            prevState = [...Array(props.deviceCount).keys()]
+            return prevState
+        })
+
+        return () => {
+            setCircles((prevState: any) => {
+                prevState = [...Array(props.deviceCount).keys()]
+                return prevState
+            })
+        }
+    }, [props.deviceCount])
+
+    const getCircles = () => {
         let {deviceCount} = props;
         if (deviceCount === 0) {
             return null;
         }
 
-        let circleArr = [];
-        let rotatingAngle = 360/deviceCount;
+        let circleArr = Array<any>();
+        let rotatingAngle = 360 / deviceCount;
 
-        for (let i = 0; i < deviceCount; i++) {
+        circles.map((data, i) => {
             if (i === 0) {
-                circleArr.push(<div className={"circle"} key={i}
-                                    style={{transform: `translateX(250px)`}}></div>);
+                circleArr.push(<div className={"animate-obj"} key={i}
+                                    ><span style={{transform: `translateX(50px)`}} className={"circle-element"}></span>
+                </div>);
             } else {
                 let angle = rotatingAngle * i;
-                circleArr.push(<div className={"circle"} key={i}
-                                    style={{transform: `rotate(${angle}deg) translateX(250px)`}}></div>);
+                circleArr.push(<div className={"animate-obj"} key={i}
+                                    ><span style={{transform: `rotate(${angle}deg) translateX(50px)`}}
+                    className={"circle-element"}></span></div>);
             }
-        }
+        })
         return circleArr;
     }
 
@@ -33,7 +51,11 @@ function Orbit(props: props) {
         <React.Fragment>
             <div className={"main centerFlex centerScreen fl-column"}>
                 <div>
-                    {getDivs()}
+                    <div className="container-element">
+                        {
+                            getCircles()
+                        }
+                    </div>
                     <div className={""}>
                         <div className={"bigNum"}>{props.deviceCount}</div>
                         <div className={"text-white smallText"}>DEVICES</div>

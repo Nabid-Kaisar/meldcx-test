@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import "./Orbit.css";
 
 interface props {
@@ -9,7 +9,6 @@ function Orbit(props: props) {
     const [circles, setCircles] = React.useState([])
 
     React.useEffect(() => {
-        console.log('Render:', props.deviceCount)
         setCircles((prevState: any) => {
             prevState = [...Array(props.deviceCount).keys()]
             return prevState

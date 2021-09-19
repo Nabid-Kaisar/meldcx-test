@@ -6,6 +6,7 @@ import "./Devices.css";
 import Button from "../genericComponents/button/Button";
 import {useHistory} from "react-router-dom";
 import Orbit from "../orbit/Orbit";
+import Loading from "../orbit/Loading";
 
 const logoutBtnStyle = {
     backgroundColor: "#545b62",
@@ -30,16 +31,18 @@ const notifyBtnStyle = {
 
 function Devices() {
     const [devicesList, setDevicesList] = useState([]);
+    const [showOrbit, setShowOrbit] = useState(false);
     const history = useHistory();
 
     let setTimeOutRef: NodeJS.Timeout;
 
     const getDevicesList = () => {
+        setShowOrbit(false);
         devicesApi.getDevicesList()
             .then(res => {
                 setDevicesList(res.data.devices);
                 setTimeOutRef = setTimeout(() => getDevicesList(), CONSTANTS.pollingInterval)
-                console.log(setTimeOutRef);
+                setShowOrbit(true);
             })
             .catch(err => alert(err));
     }
@@ -61,9 +64,10 @@ function Devices() {
 
     }
 
+
     return (
         <div className={"dev-bg"}>
-            <Orbit deviceCount={devicesList.length}/>
+            {showOrbit ? <Orbit deviceCount={devicesList.length}/> : <Loading/>}
             <div className={"footer-bg fixed-bottom centerFlex"}>
                 <Button onClickCb={handleNotify} label={"NOTIFY"} class={"btn btn-light"}
                         styles={notifyBtnStyle}/>

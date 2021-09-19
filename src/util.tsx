@@ -1,5 +1,6 @@
 import Routes  from "./routes/Routes"
 import Cookies from 'universal-cookie';
+import CONSTANTS from "./CONSTANTS";
 
 const cookies = new Cookies();
 
@@ -11,7 +12,6 @@ const renderAllRoutes = () => {
 
 const setCookies = (name:string, value:string, options?: CookieSetOptions) => {
     cookies.set(name, value, options);
-    console.log(cookies.get(name));
 }
 
 const getCookies = (name: string) => {
@@ -20,6 +20,12 @@ const getCookies = (name: string) => {
 
 const removeCookies = (name:string) => {
     cookies.remove(name);
+}
+
+const isUserAuthenticated = () => {
+    if(getCookies(CONSTANTS.authTokenNameOfCookie)){
+        return true;
+    }else return false;
 }
 
 export interface CookieSetOptions {
@@ -35,6 +41,6 @@ export interface CookieSetOptions {
 
 
 
-const UtilMethods = {renderAllRoutes, setCookies, getCookies, removeCookies}
+const UtilMethods = {renderAllRoutes, setCookies, getCookies, removeCookies, isUserAuthenticated}
 
 export default UtilMethods;

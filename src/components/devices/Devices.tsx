@@ -7,6 +7,7 @@ import Button from "../genericComponents/button/Button";
 import {useHistory} from "react-router-dom";
 import Orbit from "../orbit/Orbit";
 import Loading from "../orbit/Loading";
+import NotifyRequestBody from "../../models/notifyRequestBody";
 
 const logoutBtnStyle = {
     backgroundColor: "#545b62",
@@ -44,10 +45,16 @@ function Devices() {
                 setTimeOutRef = setTimeout(() => getDevicesList(), CONSTANTS.pollingInterval)
                 setShowOrbit(true);
             })
-            .catch(err => alert(err));
+            .catch(err => console.error(err));
     }
 
     useEffect(() => {
+        if (!util.isUserAuthenticated()) {
+            alert("You must login first");
+
+            history.push("/login",);
+        }
+
         getDevicesList();
 
         return () => {
@@ -61,7 +68,12 @@ function Devices() {
     }
 
     const handleNotify = (): void => {
-
+        devicesApi.doNotify(CONSTANTS.myNotificationReq).then(res => {
+            console.log(res);
+        })
+            .catch(err => {
+                console.error(err);
+            })
     }
 
 

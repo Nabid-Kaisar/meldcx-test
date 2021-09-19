@@ -34,13 +34,13 @@ function Orbit(props: props) {
         circles.map((data, i) => {
             if (i === 0) {
                 circleArr.push(<div className={"animate-obj"} key={i}
-                                    ><span style={{transform: `translateX(50px)`}} className={"circle-element"}></span>
+                ><span style={{transform: `translateX(50px)`}} className={"circle-element"}></span>
                 </div>);
             } else {
                 let angle = rotatingAngle * i;
                 circleArr.push(<div className={"animate-obj"} key={i}
-                                    ><span style={{transform: `rotate(${angle}deg) translateX(50px)`}}
-                    className={"circle-element"}></span></div>);
+                ><span style={{transform: `rotate(${angle}deg) translateX(50px)`}}
+                       className={"circle-element"}></span></div>);
             }
         })
         return circleArr;
@@ -55,7 +55,7 @@ function Orbit(props: props) {
                             getCircles()
                         }
                     </div>
-                    <div className={""}>
+                    <div>
                         <div className={"bigNum"}>{props.deviceCount}</div>
                         <div className={"text-white smallText"}>DEVICES</div>
                         <div className={"text-white smallText"}>ONLINE</div>
